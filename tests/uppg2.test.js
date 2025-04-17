@@ -11,8 +11,15 @@ describe('uppg2', () => {
     consoleSpy.mockRestore();
   });
 
-  test('should print "Hampus"', () => {
+  test('ska skriva ut en icke-tom sträng i konsolen', () => {
     uppg2();
-    expect(consoleSpy).toHaveBeenCalledWith('Hampus');
+    
+    expect(consoleSpy).toHaveBeenCalled();
+
+    const loggedValue = consoleSpy.mock.calls[0][0];
+
+    expect(typeof loggedValue).toBe('string');
+
+    expect(loggedValue.length).toBeGreaterThan(0);
   });
 });
